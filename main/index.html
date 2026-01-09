@@ -46,17 +46,12 @@
     }
     .subtitle{
       margin: 0;
-      font-size: 14px;
-      color: var(--muted);
+      font-size: 18px;     /* 기존 14px -> 키움 */
+      color: #000000;      /* 검정 */
+      font-weight: 700;    /* 약간 굵게 */
     }
-    .subtitle .dot{
-      display:inline-block;
-      width: 8px; height: 8px;
-      background: var(--accent);
-      border-radius: 999px;
-      margin-right: 8px;
-      vertical-align: middle;
-    }
+    .subtitle .dot{ display:none; }  /* 다홍색 원 제거 */
+
 
     /* Section */
     section{ padding: 28px 0; }
@@ -97,8 +92,8 @@
     /* Framework image placeholder */
     .figure{
       border-radius: var(--radius);
-      border: 1px dashed var(--border);
-      background: linear-gradient(180deg, #fff, #fafafa);
+      border: 1px solid var(--border);   /* dashed -> solid로 바꿈 (원하면 dashed로 유지해도 됨) */
+      background: #fff;
       padding: 14px;
       overflow: hidden;
     }
@@ -107,6 +102,12 @@
       height: auto;
       display:block;
       border-radius: 12px;
+    }
+    .figcaption{
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
     }
     .figure .placeholder{
       padding: 34px 10px;
@@ -284,7 +285,7 @@
     <!-- ===== Header ===== -->
     <header class="hero">
       <h1 class="title">ImmersiveTTS: Environment-Aware Text-to-Speech with Multimodal Diffusion Transformer and Domain-Specific Representation Alignment (Demo Page)</h1>
-      <p class="subtitle"><span class="dot"></span>Anonymous Authors</p>
+      <p class="subtitle">Anonymous Authors</p>
     </header>
 
     <!-- ===== Abstract ===== -->
@@ -303,25 +304,20 @@
     <section id="framework">
       <div class="sec-head">
         <h2 class="sec-title">Model Framework Overview</h2>
-        <p class="sec-note">Put a single overview figure (PNG/SVG). Click tasks below to jump.</p>
       </div>
 
-      <div class="figure">
-        <!-- 사용 시: src를 실제 그림 경로로 바꾸고 placeholder DIV는 지워도 됨 -->
-        <!-- <img src="assets/overview.png" alt="Model framework overview"> -->
-        <div class="placeholder">
-          <b>Framework figure placeholder</b><br/>
-          Replace with <span class="kbd">assets/overview.png</span> (or SVG) and uncomment the <span class="kbd">&lt;img&gt;</span>.
-        </div>
-        <div class="badge"><span class="pip"></span>Point color: coral / salmon accent</div>
-      </div>
+      <figure class="figure">
+        <img src="assets/overview.png" alt="Model framework overview">
+        <figcaption class="figcaption">
+          Figure 1: Overview of ImmersiveTTS.
+        </figcaption>
+      </figure>
     </section>
 
     <!-- ===== Task Buttons ===== -->
     <section id="tasks">
       <div class="sec-head">
         <h2 class="sec-title">Tasks</h2>
-        <p class="sec-note">2×3 buttons → mapped to sections below (smooth scroll + highlight).</p>
       </div>
 
       <div class="task-grid" id="taskGrid">
