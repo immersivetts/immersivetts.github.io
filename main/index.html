@@ -309,7 +309,7 @@
       <figure class="figure">
         <img src="img/overview.png" alt="Model framework overview">
         <figcaption class="figcaption">
-          Figure 1: Overview of ImmersiveTTS.
+          Figure 1: Overview of ImmersiveTTS. A dual-stream MM-DiT backbone conditions the speech stream on content prompt-aligned linguistic features. At the same time, Flan-T5 token embeddings drive the environmental context stream, and CLAP embeddings modulate AdaLN for global conditioning. The model is trained with flow matching and domain-specific REPA objectives.
         </figcaption>
       </figure>
     </section>
@@ -321,35 +321,34 @@
       </div>
 
       <div class="task-grid" id="taskGrid">
-        <!-- 버튼들은 JS로 active 처리. data-target은 아래 섹션 id와 매핑 -->
         <button class="task-btn" data-target="task-envtts">
           <p class="task-name">Env-TTS</p>
-          <p class="task-desc">Qualitative samples in diverse acoustic scenes</p>
+          <!-- <p class="task-desc">Qualitative samples in diverse acoustic scenes</p> -->
         </button>
 
         <button class="task-btn" data-target="task-a">
           <p class="task-name">Task A</p>
-          <p class="task-desc">Your custom setting / benchmark A</p>
+          <!-- <p class="task-desc">Your custom setting / benchmark A</p> -->
         </button>
 
         <button class="task-btn" data-target="task-b">
           <p class="task-name">Task B</p>
-          <p class="task-desc">Your custom setting / benchmark B</p>
+          <!-- <p class="task-desc">Your custom setting / benchmark B</p> -->
         </button>
 
         <button class="task-btn" data-target="task-nfes">
           <p class="task-name">NFEs Comparison</p>
-          <p class="task-desc">Efficiency vs quality trade-off</p>
+          <!-- <p class="task-desc">Efficiency vs quality trade-off</p> -->
         </button>
 
         <button class="task-btn" data-target="task-cfg">
           <p class="task-name">CFG Guidance Study</p>
-          <p class="task-desc">Vary guidance scales and observe behavior</p>
+          <!-- <p class="task-desc">Vary guidance scales and observe behavior</p> -->
         </button>
 
         <button class="task-btn" data-target="task-extra">
           <p class="task-name">Extra / Ablation</p>
-          <p class="task-desc">Add one more section if needed</p>
+          <!-- <p class="task-desc">Add one more section if needed</p> -->
         </button>
       </div>
     </section>
