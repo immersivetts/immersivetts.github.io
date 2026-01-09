@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Anonymous Demo</title>
+
+  <style>
+    :root{
+      /* 다홍/코랄 계열 포인트 컬러 */
+      --accent: #ff5a5f;
+      --accent-2: #ff7a7e;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #ffffff;
+      --card: #ffffff;
+      --shadow: 0 10px 25px rgba(0,0,0,0.06);
+      --radius: 16px;
+      --maxw: 1060px;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 42px 20px 80px; }
+
+    /* Header */
+    .hero{
+      padding: 10px 0 22px;
+      border-bottom: 1px solid var(--border);
+    }
+    .title{
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+    }
+    .subtitle{
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .subtitle .dot{
+      display:inline-block;
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 999px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    /* Section */
+    section{ padding: 28px 0; }
+    .sec-head{
+      display:flex; align-items: baseline; gap: 10px;
+      margin: 0 0 12px;
+    }
+    .sec-title{
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0;
+    }
+    .sec-title::before{
+      content:"";
+      display:inline-block;
+      width: 10px; height: 10px;
+      background: var(--accent);
+      border-radius: 999px;
+      margin-right: 10px;
+      transform: translateY(-1px);
+    }
+    .sec-note{
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Cards */
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+    .card + .card{ margin-top: 12px; }
+
+    /* Framework image placeholder */
+    .figure{
+      border-radius: var(--radius);
+      border: 1px dashed var(--border);
+      background: linear-gradient(180deg, #fff, #fafafa);
+      padding: 14px;
+      overflow: hidden;
+    }
+    .figure img{
+      width: 100%;
+      height: auto;
+      display:block;
+      border-radius: 12px;
+    }
+    .figure .placeholder{
+      padding: 34px 10px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,90,95,0.25);
+      background: rgba(255,90,95,0.08);
+      color: #8b1114;
+      margin-top: 10px;
+    }
+    .badge .pip{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(255,90,95,0.15);
+    }
+
+    /* Task buttons grid (2x3) */
+    .task-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    @media (max-width: 860px){
+      .task-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px){
+      .task-grid{ grid-template-columns: 1fr; }
+    }
+    .task-btn{
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: #fff;
+      padding: 14px 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: transform .08s ease, border-color .15s ease, box-shadow .15s ease;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+    }
+    .task-btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,90,95,0.45);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+    }
+    .task-btn.active{
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(255,90,95,0.12), 0 12px 24px rgba(0,0,0,0.06);
+    }
+    .task-name{
+      font-weight: 800;
+      margin: 0 0 4px;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+    .task-desc{
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Task sections */
+    .task-section{
+      scroll-margin-top: 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      background: #fff;
+    }
+    .task-section + .task-section{ margin-top: 14px; }
+
+    .task-section .h{
+      display:flex; align-items:center; justify-content: space-between; gap: 12px;
+      margin-bottom: 10px;
+    }
+    .task-section .h h3{
+      margin: 0;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+    .pill{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,90,95,0.10);
+      border: 1px solid rgba(255,90,95,0.25);
+      color: #8b1114;
+      white-space: nowrap;
+    }
+
+    /* Samples grid inside each task */
+    .samples{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 860px){
+      .samples{ grid-template-columns: 1fr; }
+    }
+
+    .sample-card{
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      background: #fff;
+    }
+    .sample-title{
+      margin: 0 0 8px;
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .sample-meta{
+      margin: 0 0 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Audio rows (placeholders) */
+    .audio-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    @media (max-width: 520px){
+      .audio-grid{ grid-template-columns: 1fr; }
+    }
+    .audio-item{
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      background: #fafafa;
+    }
+    .audio-label{
+      font-size: 12px;
+      font-weight: 800;
+      margin: 0 0 6px;
+      display:flex; align-items:center; gap:8px;
+    }
+    .audio-label .mini{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: var(--accent);
+    }
+    audio{ width: 100%; }
+
+    /* Footer */
+    .footer{
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 11px;
+      padding: 2px 6px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fafafa;
+      color: #374151;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- ===== Header ===== -->
+    <header class="hero">
+      <h1 class="title">YOUR PAPER TITLE HERE (Environment-Aware TTS Demo)</h1>
+      <p class="subtitle"><span class="dot"></span>Anonymous Authors</p>
+    </header>
+
+    <!-- ===== Abstract ===== -->
+    <section id="abstract">
+      <div class="sec-head">
+        <h2 class="sec-title">Abstract</h2>
+        <p class="sec-note">Replace this text with your paper abstract.</p>
+      </div>
+      <div class="card">
+        <p style="margin:0;">
+          We present <b>METHODNAME</b>, an environment-aware text-to-speech system that synthesizes intelligible speech
+          together with coherent environmental audio. This demo page provides qualitative examples across multiple tasks,
+          including Env-TTS, ablations, and inference efficiency comparisons.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Framework Overview ===== -->
+    <section id="framework">
+      <div class="sec-head">
+        <h2 class="sec-title">Model Framework Overview</h2>
+        <p class="sec-note">Put a single overview figure (PNG/SVG). Click tasks below to jump.</p>
+      </div>
+
+      <div class="figure">
+        <!-- 사용 시: src를 실제 그림 경로로 바꾸고 placeholder DIV는 지워도 됨 -->
+        <!-- <img src="assets/overview.png" alt="Model framework overview"> -->
+        <div class="placeholder">
+          <b>Framework figure placeholder</b><br/>
+          Replace with <span class="kbd">assets/overview.png</span> (or SVG) and uncomment the <span class="kbd">&lt;img&gt;</span>.
+        </div>
+        <div class="badge"><span class="pip"></span>Point color: coral / salmon accent</div>
+      </div>
+    </section>
+
+    <!-- ===== Task Buttons ===== -->
+    <section id="tasks">
+      <div class="sec-head">
+        <h2 class="sec-title">Tasks</h2>
+        <p class="sec-note">2×3 buttons → mapped to sections below (smooth scroll + highlight).</p>
+      </div>
+
+      <div class="task-grid" id="taskGrid">
+        <!-- 버튼들은 JS로 active 처리. data-target은 아래 섹션 id와 매핑 -->
+        <button class="task-btn" data-target="task-envtts">
+          <p class="task-name">Env-TTS</p>
+          <p class="task-desc">Qualitative samples in diverse acoustic scenes</p>
+        </button>
+
+        <button class="task-btn" data-target="task-a">
+          <p class="task-name">Task A</p>
+          <p class="task-desc">Your custom setting / benchmark A</p>
+        </button>
+
+        <button class="task-btn" data-target="task-b">
+          <p class="task-name">Task B</p>
+          <p class="task-desc">Your custom setting / benchmark B</p>
+        </button>
+
+        <button class="task-btn" data-target="task-nfes">
+          <p class="task-name">NFEs Comparison</p>
+          <p class="task-desc">Efficiency vs quality trade-off</p>
+        </button>
+
+        <button class="task-btn" data-target="task-cfg">
+          <p class="task-name">CFG Guidance Study</p>
+          <p class="task-desc">Vary guidance scales and observe behavior</p>
+        </button>
+
+        <button class="task-btn" data-target="task-extra">
+          <p class="task-name">Extra / Ablation</p>
+          <p class="task-desc">Add one more section if needed</p>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== Task Sections (each with 4 samples) ===== -->
+    <section id="results">
+      <div class="sec-head">
+        <h2 class="sec-title">Examples</h2>
+        <p class="sec-note">Each task has 4 samples (edit captions and audio paths).</p>
+      </div>
+
+      <!-- Env-TTS -->
+      <div class="task-section" id="task-envtts">
+        <div class="h">
+          <h3>Env-TTS</h3>
+          <span class="pill">4 samples</span>
+        </div>
+
+        <div class="samples">
+          <!-- sample 1 -->
+          <div class="sample-card">
+            <p class="sample-title">Sample 1</p>
+            <p class="sample-meta">Prompt: “(put your text prompt here)”</p>
+            <div class="audio-grid">
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ground Truth</p>
+                <audio controls src="assets/envtts/sample1_gt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ours</p>
+                <audio controls src="assets/envtts/sample1_ours.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Baseline (optional)</p>
+                <audio controls src="assets/envtts/sample1_base.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ours (alt setting)</p>
+                <audio controls src="assets/envtts/sample1_ours_alt.wav"></audio>
+              </div>
+            </div>
+          </div>
+
+          <!-- sample 2 -->
+          <div class="sample-card">
+            <p class="sample-title">Sample 2</p>
+            <p class="sample-meta">Prompt: “(put your text prompt here)”</p>
+            <div class="audio-grid">
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ground Truth</p>
+                <audio controls src="assets/envtts/sample2_gt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ours</p>
+                <audio controls src="assets/envtts/sample2_ours.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Baseline (optional)</p>
+                <audio controls src="assets/envtts/sample2_base.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ours (alt setting)</p>
+                <audio controls src="assets/envtts/sample2_ours_alt.wav"></audio>
+              </div>
+            </div>
+          </div>
+
+          <!-- sample 3 -->
+          <div class="sample-card">
+            <p class="sample-title">Sample 3</p>
+            <p class="sample-meta">Prompt: “(put your text prompt here)”</p>
+            <div class="audio-grid">
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ground Truth</p>
+                <audio controls src="assets/envtts/sample3_gt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ours</p>
+                <audio controls src="assets/envtts/sample3_ours.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Baseline (optional)</p>
+                <audio controls src="assets/envtts/sample3_base.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ours (alt setting)</p>
+                <audio controls src="assets/envtts/sample3_ours_alt.wav"></audio>
+              </div>
+            </div>
+          </div>
+
+          <!-- sample 4 -->
+          <div class="sample-card">
+            <p class="sample-title">Sample 4</p>
+            <p class="sample-meta">Prompt: “(put your text prompt here)”</p>
+            <div class="audio-grid">
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ground Truth</p>
+                <audio controls src="assets/envtts/sample4_gt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ours</p>
+                <audio controls src="assets/envtts/sample4_ours.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Baseline (optional)</p>
+                <audio controls src="assets/envtts/sample4_base.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ours (alt setting)</p>
+                <audio controls src="assets/envtts/sample4_ours_alt.wav"></audio>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task A -->
+      <div class="task-section" id="task-a">
+        <div class="h">
+          <h3>Task A</h3>
+          <span class="pill">4 samples</span>
+        </div>
+        <div class="samples">
+          <!-- 4 placeholders -->
+          <div class="sample-card">
+            <p class="sample-title">Sample 1</p>
+            <p class="sample-meta">Short description / condition.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 1</p><audio controls src="assets/taskA/a1_s1.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 2</p><audio controls src="assets/taskA/a1_s2.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 2</p>
+            <p class="sample-meta">Short description / condition.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 1</p><audio controls src="assets/taskA/a2_s1.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 2</p><audio controls src="assets/taskA/a2_s2.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 3</p>
+            <p class="sample-meta">Short description / condition.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 1</p><audio controls src="assets/taskA/a3_s1.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 2</p><audio controls src="assets/taskA/a3_s2.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 4</p>
+            <p class="sample-meta">Short description / condition.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 1</p><audio controls src="assets/taskA/a4_s1.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 2</p><audio controls src="assets/taskA/a4_s2.wav"></audio></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task B -->
+      <div class="task-section" id="task-b">
+        <div class="h">
+          <h3>Task B</h3>
+          <span class="pill">4 samples</span>
+        </div>
+        <div class="samples">
+          <div class="sample-card">
+            <p class="sample-title">Sample 1</p>
+            <p class="sample-meta">Short description / condition.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 1</p><audio controls src="assets/taskB/b1_s1.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 2</p><audio controls src="assets/taskB/b1_s2.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 2</p>
+            <p class="sample-meta">Short description / condition.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 1</p><audio controls src="assets/taskB/b2_s1.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 2</p><audio controls src="assets/taskB/b2_s2.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 3</p>
+            <p class="sample-meta">Short description / condition.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 1</p><audio controls src="assets/taskB/b3_s1.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 2</p><audio controls src="assets/taskB/b3_s2.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 4</p>
+            <p class="sample-meta">Short description / condition.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 1</p><audio controls src="assets/taskB/b4_s1.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Setting 2</p><audio controls src="assets/taskB/b4_s2.wav"></audio></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NFEs -->
+      <div class="task-section" id="task-nfes">
+        <div class="h">
+          <h3>NFEs Comparison</h3>
+          <span class="pill">4 samples</span>
+        </div>
+        <div class="samples">
+          <div class="sample-card">
+            <p class="sample-title">Sample 1</p>
+            <p class="sample-meta">Compare few-step vs many-step (NFEs).</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Ours (9 steps)</p><audio controls src="assets/nfes/n1_ours_9.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Baseline (200 NFEs)</p><audio controls src="assets/nfes/n1_base_200.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 2</p>
+            <p class="sample-meta">Compare few-step vs many-step (NFEs).</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Ours (9 steps)</p><audio controls src="assets/nfes/n2_ours_9.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Baseline (200 NFEs)</p><audio controls src="assets/nfes/n2_base_200.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 3</p>
+            <p class="sample-meta">Compare few-step vs many-step (NFEs).</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Ours (9 steps)</p><audio controls src="assets/nfes/n3_ours_9.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Baseline (200 NFEs)</p><audio controls src="assets/nfes/n3_base_200.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 4</p>
+            <p class="sample-meta">Compare few-step vs many-step (NFEs).</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Ours (9 steps)</p><audio controls src="assets/nfes/n4_ours_9.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Baseline (200 NFEs)</p><audio controls src="assets/nfes/n4_base_200.wav"></audio></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CFG -->
+      <div class="task-section" id="task-cfg">
+        <div class="h">
+          <h3>CFG Guidance Study</h3>
+          <span class="pill">4 samples</span>
+        </div>
+        <div class="samples">
+          <div class="sample-card">
+            <p class="sample-title">Sample 1</p>
+            <p class="sample-meta">Vary (ω_env, ω_cont) and compare.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 3)</p><audio controls src="assets/cfg/c1_3_3.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 7)</p><audio controls src="assets/cfg/c1_3_7.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 2</p>
+            <p class="sample-meta">Vary (ω_env, ω_cont) and compare.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 3)</p><audio controls src="assets/cfg/c2_3_3.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 7)</p><audio controls src="assets/cfg/c2_3_7.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 3</p>
+            <p class="sample-meta">Vary (ω_env, ω_cont) and compare.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 3)</p><audio controls src="assets/cfg/c3_3_3.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 7)</p><audio controls src="assets/cfg/c3_3_7.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 4</p>
+            <p class="sample-meta">Vary (ω_env, ω_cont) and compare.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 3)</p><audio controls src="assets/cfg/c4_3_3.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 7)</p><audio controls src="assets/cfg/c4_3_7.wav"></audio></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extra -->
+      <div class="task-section" id="task-extra">
+        <div class="h">
+          <h3>Extra / Ablation</h3>
+          <span class="pill">4 samples</span>
+        </div>
+        <div class="samples">
+          <div class="sample-card">
+            <p class="sample-title">Sample 1</p>
+            <p class="sample-meta">e.g., w/ vs w/o REPA, teacher type, etc.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant A</p><audio controls src="assets/extra/x1_a.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant B</p><audio controls src="assets/extra/x1_b.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 2</p>
+            <p class="sample-meta">e.g., w/ vs w/o REPA, teacher type, etc.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant A</p><audio controls src="assets/extra/x2_a.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant B</p><audio controls src="assets/extra/x2_b.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 3</p>
+            <p class="sample-meta">e.g., w/ vs w/o REPA, teacher type, etc.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant A</p><audio controls src="assets/extra/x3_a.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant B</p><audio controls src="assets/extra/x3_b.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 4</p>
+            <p class="sample-meta">e.g., w/ vs w/o REPA, teacher type, etc.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant A</p><audio controls src="assets/extra/x4_a.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant B</p><audio controls src="assets/extra/x4_b.wav"></audio></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        Tip: put your audio under <span class="kbd">assets/</span> and keep filenames stable.
+        If you host on GitHub Pages, relative paths like <span class="kbd">assets/envtts/sample1_ours.wav</span> will work.
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // 버튼 클릭 → 해당 섹션으로 스크롤 + 버튼 active 표시
+    const btns = Array.from(document.querySelectorAll('.task-btn'));
+
+    function setActive(targetId){
+      btns.forEach(b => b.classList.toggle('active', b.dataset.target === targetId));
+    }
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.target;
+        const el = document.getElementById(id);
+        if (!el) return;
+        setActive(id);
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+        history.replaceState(null, '', '#' + id);
+      });
+    });
+
+    // URL hash로 들어오면 해당 버튼 active
+    function syncFromHash(){
+      const h = (location.hash || '').replace('#','');
+      if (!h) return;
+      const has = document.getElementById(h);
+      if (!has) return;
+      setActive(h);
+    }
+    window.addEventListener('hashchange', syncFromHash);
+    syncFromHash();
+  </script>
+</body>
+</html>
