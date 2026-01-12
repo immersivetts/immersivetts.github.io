@@ -255,11 +255,8 @@
     /* Samples grid inside each task */
     .samples{
       display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 12px;
-    }
-    @media (max-width: 860px){
-      .samples{ grid-template-columns: 1fr; }
     }
 
     .sample-card{
@@ -276,13 +273,14 @@
     .sample-meta{
       margin: 0 0 10px;
       font-size: 12px;
-      color: var(--muted);
+      color: var(--text);
+      font-weight: 600;
     }
 
     /* Audio rows (placeholders) */
     .audio-grid{
       display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 10px;
     }
     @media (max-width: 520px){
@@ -303,6 +301,10 @@
     .audio-label .mini{
       width: 8px; height: 8px; border-radius: 999px;
       background: var(--accent);
+      transition: background-color 0.2s ease;
+    }
+    .audio-label.playing .mini{
+      background: #22c55e;
     }
     audio{ width: 100%; }
 
@@ -418,7 +420,7 @@
       <div class="task-section" id="task-envtts">
         <div class="h">
           <h3>Environment-Aware TTS</h3>
-          <span class="pill">4 samples</span>
+          <!-- <span class="pill">4 samples</span> -->
         </div>
 
         <div class="samples">
@@ -524,7 +526,7 @@
       <div class="task-section" id="task-a">
         <div class="h">
           <h3>Text-to-Speech</h3>
-          <span class="pill">4 samples</span>
+          <!-- <span class="pill">4 samples</span> -->
         </div>
         <div class="samples">
           <!-- sample 1 -->
@@ -629,7 +631,7 @@
       <div class="task-section" id="task-b">
         <div class="h">
           <h3>Text-to-Audio</h3>
-          <span class="pill">4 samples</span>
+          <!-- <span class="pill">4 samples</span> -->
         </div>
         <div class="samples">
           <!-- sample 1 -->
@@ -734,7 +736,7 @@
       <div class="task-section" id="task-extra">
         <div class="h">
           <h3>REPA Analysis</h3>
-          <span class="pill">4 samples</span>
+          <!-- <span class="pill">4 samples</span> -->
         </div>
         <div class="samples">
           <div class="sample-card">
@@ -776,7 +778,7 @@
       <div class="task-section" id="task-nfes">
         <div class="h">
           <h3>NFEs Comparison</h3>
-          <span class="pill">4 samples</span>
+          <!-- <span class="pill">4 samples</span> -->
         </div>
         <div class="samples">
           <div class="sample-card">
@@ -818,7 +820,7 @@
       <div class="task-section" id="task-cfg">
         <div class="h">
           <h3>Dual-CFG Scale</h3>
-          <span class="pill">4 samples</span>
+          <!-- <span class="pill">4 samples</span> -->
         </div>
         <div class="samples">
           <div class="sample-card">
@@ -891,6 +893,25 @@
     }
     window.addEventListener('hashchange', syncFromHash);
     syncFromHash();
+
+    // 오디오 재생 중 bullet 색상 변경
+    const audioElements = document.querySelectorAll('audio');
+    audioElements.forEach(audio => {
+      const label = audio.closest('.audio-item')?.querySelector('.audio-label');
+      if (!label) return;
+
+      audio.addEventListener('play', () => {
+        label.classList.add('playing');
+      });
+
+      audio.addEventListener('pause', () => {
+        label.classList.remove('playing');
+      });
+
+      audio.addEventListener('ended', () => {
+        label.classList.remove('playing');
+      });
+    });
   </script>
 </body>
 </html>
