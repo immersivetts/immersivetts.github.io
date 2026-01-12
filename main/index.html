@@ -271,9 +271,9 @@
       font-size: 13px;
     }
     .sample-meta{
-      margin: 0 0 10px;
+      margin: 0 0 6px;
       font-size: 12px;
-      color: var(--text);
+      color: #4b5563;
       font-weight: 600;
     }
 
@@ -378,7 +378,7 @@
 
       <div class="task-grid" id="taskGrid">
         <button class="task-btn" data-target="task-envtts">
-          <p class="task-name">Environment-Aware TTS</p>
+          <p class="task-name">Environment-Aware Text-to-Speech</p>
           <!-- <p class="task-desc">Qualitative samples in diverse acoustic scenes</p> -->
         </button>
 
@@ -419,7 +419,7 @@
       <!-- Environment-Aware TTS -->
       <div class="task-section" id="task-envtts">
         <div class="h">
-          <h3>Environment-Aware TTS</h3>
+          <h3>Environment-Aware Text-to-Speech</h3>
           <!-- <span class="pill">4 samples</span> -->
         </div>
 
@@ -427,15 +427,16 @@
           <!-- sample 1 -->
           <div class="sample-card">
             <p class="sample-title">Sample 1</p>
-            <p class="sample-meta">Prompt: “Birds chirping with leaves rustling and wind”</p>
+            <p class="sample-meta">Transcription: "(put transcription here)"</p>
+            <p class="sample-meta">Environment Description: "Birds chirping with leaves rustling and wind"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
                 <audio controls src="audio/envtts/gt/bygBWUkpaC8_103351.wav"></audio>
               </div>
               <div class="audio-item">
-                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
-                <audio controls src="audio/envtts/immersivetts/bygBWUkpaC8_103351.wav"></audio>
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/envtts/recon/bygBWUkpaC8_103351.wav"></audio>
               </div>
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
@@ -445,21 +446,26 @@
                 <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
                 <audio controls src="audio/envtts/voicedit/bygBWUkpaC8_103351.wav"></audio>
               </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/envtts/immersivetts/bygBWUkpaC8_103351.wav"></audio>
+              </div>
             </div>
           </div>
 
           <!-- sample 2 -->
           <div class="sample-card">
             <p class="sample-title">Sample 2</p>
-            <p class="sample-meta">Prompt: “Rapid and repeated gunfire”</p>
+            <p class="sample-meta">Transcription: "(put transcription here)"</p>
+            <p class="sample-meta">Environment Description: "Rapid and repeated gunfire"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
                 <audio controls src="audio/envtts/gt/Ff8bCCJfVX4_105720.wav"></audio>
               </div>
               <div class="audio-item">
-                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
-                <audio controls src="audio/envtts/immersivetts/Ff8bCCJfVX4_105720.wav"></audio>
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/envtts/recon/Ff8bCCJfVX4_105720.wav"></audio>
               </div>
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
@@ -469,21 +475,26 @@
                 <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
                 <audio controls src="audio/envtts/voicedit/Ff8bCCJfVX4_105720.wav"></audio>
               </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/envtts/immersivetts/Ff8bCCJfVX4_105720.wav"></audio>
+              </div>
             </div>
           </div>
 
           <!-- sample 3 -->
           <div class="sample-card">
             <p class="sample-title">Sample 3</p>
-            <p class="sample-meta">Prompt: “A vehicle accelerating”</p>
+            <p class="sample-meta">Transcription: "(put transcription here)"</p>
+            <p class="sample-meta">Environment Description: "A vehicle accelerating"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
                 <audio controls src="audio/envtts/gt/B4SZwi9Ce3o_103008.wav"></audio>
               </div>
               <div class="audio-item">
-                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
-                <audio controls src="audio/envtts/immersivetts/B4SZwi9Ce3o_103008.wav"></audio>
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/envtts/recon/B4SZwi9Ce3o_103008.wav"></audio>
               </div>
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
@@ -493,21 +504,26 @@
                 <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
                 <audio controls src="audio/envtts/voiceldm/B4SZwi9Ce3o_103008.wav"></audio>
               </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/envtts/immersivetts/B4SZwi9Ce3o_103008.wav"></audio>
+              </div>
             </div>
           </div>
 
           <!-- sample 4 -->
           <div class="sample-card">
             <p class="sample-title">Sample 4</p>
-            <p class="sample-meta">Prompt: “Dishes clanking and doors banging”</p>
+            <p class="sample-meta">Transcription: "(put transcription here)"</p>
+            <p class="sample-meta">Environment Description: "Dishes clanking and doors banging"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
                 <audio controls src="audio/envtts/gt/xUWSHYoslPQ_107298.wav"></audio>
               </div>
               <div class="audio-item">
-                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
-                <audio controls src="audio/envtts/immersivetts/xUWSHYoslPQ_107298.wav"></audio>
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/envtts/recon/xUWSHYoslPQ_107298.wav"></audio>
               </div>
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
@@ -516,6 +532,10 @@
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
                 <audio controls src="audio/envtts/voiceldm/xUWSHYoslPQ_107298.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/envtts/immersivetts/xUWSHYoslPQ_107298.wav"></audio>
               </div>
             </div>
           </div>
@@ -532,15 +552,16 @@
           <!-- sample 1 -->
           <div class="sample-card">
             <p class="sample-title">Sample 1</p>
-            <p class="sample-meta">Prompt: "(put your text prompt here)"</p>
+            <p class="sample-meta">Transcription: "(put transcription here)"</p>
+            <p class="sample-meta">Environment Description: "(put your text prompt here)"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
                 <audio controls src="audio/tts/sample1_gt.wav"></audio>
               </div>
               <div class="audio-item">
-                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
-                <audio controls src="audio/tts/sample1_ours.wav"></audio>
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/tts/sample1_recon.wav"></audio>
               </div>
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
@@ -550,21 +571,26 @@
                 <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
                 <audio controls src="audio/tts/sample1_ours_alt.wav"></audio>
               </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/tts/sample1_ours.wav"></audio>
+              </div>
             </div>
           </div>
 
           <!-- sample 2 -->
           <div class="sample-card">
             <p class="sample-title">Sample 2</p>
-            <p class="sample-meta">Prompt: "(put your text prompt here)"</p>
+            <p class="sample-meta">Transcription: "(put transcription here)"</p>
+            <p class="sample-meta">Environment Description: "(put your text prompt here)"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
                 <audio controls src="audio/tts/sample2_gt.wav"></audio>
               </div>
               <div class="audio-item">
-                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
-                <audio controls src="audio/tts/sample2_ours.wav"></audio>
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/tts/sample2_recon.wav"></audio>
               </div>
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
@@ -574,21 +600,26 @@
                 <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
                 <audio controls src="audio/tts/sample2_ours_alt.wav"></audio>
               </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/tts/sample2_ours.wav"></audio>
+              </div>
             </div>
           </div>
 
           <!-- sample 3 -->
           <div class="sample-card">
             <p class="sample-title">Sample 3</p>
-            <p class="sample-meta">Prompt: "(put your text prompt here)"</p>
+            <p class="sample-meta">Transcription: "(put transcription here)"</p>
+            <p class="sample-meta">Environment Description: "(put your text prompt here)"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
                 <audio controls src="audio/tts/sample3_gt.wav"></audio>
               </div>
               <div class="audio-item">
-                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
-                <audio controls src="audio/tts/sample3_ours.wav"></audio>
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/tts/sample3_recon.wav"></audio>
               </div>
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
@@ -598,21 +629,26 @@
                 <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
                 <audio controls src="audio/tts/sample3_ours_alt.wav"></audio>
               </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/tts/sample3_ours.wav"></audio>
+              </div>
             </div>
           </div>
 
           <!-- sample 4 -->
           <div class="sample-card">
             <p class="sample-title">Sample 4</p>
-            <p class="sample-meta">Prompt: "(put your text prompt here)"</p>
+            <p class="sample-meta">Transcription: "(put transcription here)"</p>
+            <p class="sample-meta">Environment Description: "(put your text prompt here)"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
                 <audio controls src="audio/tts/sample4_gt.wav"></audio>
               </div>
               <div class="audio-item">
-                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
-                <audio controls src="audio/tts/sample4_ours.wav"></audio>
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/tts/sample4_recon.wav"></audio>
               </div>
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
@@ -621,6 +657,10 @@
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
                 <audio controls src="audio/tts/sample4_ours_alt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/tts/sample4_ours.wav"></audio>
               </div>
             </div>
           </div>
@@ -637,15 +677,16 @@
           <!-- sample 1 -->
           <div class="sample-card">
             <p class="sample-title">Sample 1</p>
-            <p class="sample-meta">Prompt: "(put your text prompt here)"</p>
+            <p class="sample-meta">Transcription: "(put transcription here)"</p>
+            <p class="sample-meta">Environment Description: "(put your text prompt here)"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
                 <audio controls src="audio/tta/sample1_gt.wav"></audio>
               </div>
               <div class="audio-item">
-                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
-                <audio controls src="audio/tta/sample1_ours.wav"></audio>
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/tta/sample1_recon.wav"></audio>
               </div>
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
@@ -655,21 +696,26 @@
                 <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
                 <audio controls src="audio/tta/sample1_ours_alt.wav"></audio>
               </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/tta/sample1_ours.wav"></audio>
+              </div>
             </div>
           </div>
 
           <!-- sample 2 -->
           <div class="sample-card">
             <p class="sample-title">Sample 2</p>
-            <p class="sample-meta">Prompt: "(put your text prompt here)"</p>
+            <p class="sample-meta">Transcription: "(put transcription here)"</p>
+            <p class="sample-meta">Environment Description: "(put your text prompt here)"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
                 <audio controls src="audio/tta/sample2_gt.wav"></audio>
               </div>
               <div class="audio-item">
-                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
-                <audio controls src="audio/tta/sample2_ours.wav"></audio>
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/tta/sample2_recon.wav"></audio>
               </div>
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
@@ -679,21 +725,26 @@
                 <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
                 <audio controls src="audio/tta/sample2_ours_alt.wav"></audio>
               </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/tta/sample2_ours.wav"></audio>
+              </div>
             </div>
           </div>
 
           <!-- sample 3 -->
           <div class="sample-card">
             <p class="sample-title">Sample 3</p>
-            <p class="sample-meta">Prompt: "(put your text prompt here)"</p>
+            <p class="sample-meta">Transcription: "(put transcription here)"</p>
+            <p class="sample-meta">Environment Description: "(put your text prompt here)"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
                 <audio controls src="audio/tta/sample3_gt.wav"></audio>
               </div>
               <div class="audio-item">
-                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
-                <audio controls src="audio/tta/sample3_ours.wav"></audio>
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/tta/sample3_recon.wav"></audio>
               </div>
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
@@ -703,21 +754,26 @@
                 <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
                 <audio controls src="audio/tta/sample3_ours_alt.wav"></audio>
               </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/tta/sample3_ours.wav"></audio>
+              </div>
             </div>
           </div>
 
           <!-- sample 4 -->
           <div class="sample-card">
             <p class="sample-title">Sample 4</p>
-            <p class="sample-meta">Prompt: "(put your text prompt here)"</p>
+            <p class="sample-meta">Transcription: "(put transcription here)"</p>
+            <p class="sample-meta">Environment Description: "(put your text prompt here)"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
                 <audio controls src="audio/tta/sample4_gt.wav"></audio>
               </div>
               <div class="audio-item">
-                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
-                <audio controls src="audio/tta/sample4_ours.wav"></audio>
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/tta/sample4_recon.wav"></audio>
               </div>
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
@@ -726,6 +782,10 @@
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
                 <audio controls src="audio/tta/sample4_ours_alt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/tta/sample4_ours.wav"></audio>
               </div>
             </div>
           </div>
