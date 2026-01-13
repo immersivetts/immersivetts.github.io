@@ -287,15 +287,25 @@
       color: #4b5563;
       font-weight: 600;
     }
-    /* Environment-Aware TTS 특별 색상 */
+    /* Transcription과 Environment Description 색상 */
     /* .sample-title이 <p> 태그이므로 nth-of-type 계산에 포함됨 */
-    /* Transcription (두 번째 <p>, 첫 번째 .sample-meta) - 파란색 */
+    
+    /* Environment-Aware TTS */
     #task-envtts .sample-card > p.sample-meta:nth-of-type(2){
-      color: #3b82f6;
+      color: #3b82f6; /* Transcription - 파란색 */
     }
-    /* Environment Description (세 번째 <p>, 두 번째 .sample-meta) - 초록색 */
     #task-envtts .sample-card > p.sample-meta:nth-of-type(3){
-      color: #22c55e;
+      color: #22c55e; /* Environment Description - 초록색 */
+    }
+    
+    /* Text-to-Speech (Transcription만 있음) */
+    #task-tts .sample-card > p.sample-meta:nth-of-type(2){
+      color: #3b82f6; /* Transcription - 파란색 */
+    }
+    
+    /* Text-to-Audio (Environment Description만 있음) */
+    #task-tta .sample-card > p.sample-meta:nth-of-type(2){
+      color: #22c55e; /* Environment Description - 초록색 */
     }
 
     /* Audio rows (placeholders) */
