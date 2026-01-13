@@ -302,6 +302,11 @@
     #task-tts .sample-card > p.sample-meta:nth-of-type(2){
       color: #3b82f6; /* Transcription - 파란색 */
     }
+    
+    /* Text-to-Audio (Environment Description만 있음) */
+    #task-tta .sample-card > p.sample-meta:nth-of-type(2){
+      color: #22c55e; /* Environment Description - 초록색 */
+    }
 
     /* Audio rows (placeholders) */
     .audio-grid{
@@ -416,9 +421,29 @@
           <!-- <p class="task-desc">Qualitative samples in diverse acoustic scenes</p> -->
         </button>
 
-        <button class="task-btn" data-target="task-tts">
+        <button class="task-btn" data-target="task-a">
           <p class="task-name">Text-to-Speech</p>
           <!-- <p class="task-desc">Your custom setting / benchmark A</p> -->
+        </button>
+
+        <button class="task-btn" data-target="task-b">
+          <p class="task-name">Text-to-Audio</p>
+          <!-- <p class="task-desc">Your custom setting / benchmark B</p> -->
+        </button>
+
+        <button class="task-btn" data-target="task-extra">
+          <p class="task-name">REPA Analysis</p>
+          <!-- <p class="task-desc">Add one more section if needed</p> -->
+        </button>
+
+        <button class="task-btn" data-target="task-nfes">
+          <p class="task-name">NFEs Comparison</p>
+          <!-- <p class="task-desc">Efficiency vs quality trade-off</p> -->
+        </button>
+
+        <button class="task-btn" data-target="task-cfg">
+          <p class="task-name">Dual-CFG Scale</p>
+          <!-- <p class="task-desc">Vary guidance scales and observe behavior</p> -->
         </button>
       </div>
     </section>
@@ -649,6 +674,224 @@
         </div>
       </div>
 
+      <!-- Text-to-Audio -->
+      <div class="task-section" id="task-tta">
+        <div class="h">
+          <h3>Text-to-Audio</h3>
+          <!-- <span class="pill">4 samples</span> -->
+        </div>
+        <div class="samples">
+          <!-- sample 1 -->
+          <div class="sample-card">
+            <p class="sample-title">Sample 1</p>
+            <p class="sample-meta">Environment Description: "  "</p>
+            <div class="audio-grid">
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ground Truth</p>
+                <audio controls src="audio/tta/sample1_gt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/tta/sample1_recon.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
+                <audio controls src="audio/tta/sample1_base.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
+                <audio controls src="audio/tta/sample1_ours_alt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/tta/sample1_ours.wav"></audio>
+              </div>
+            </div>
+          </div>
+
+          <!-- sample 2 -->
+          <div class="sample-card">
+            <p class="sample-title">Sample 2</p>
+            <p class="sample-meta">Environment Description: "  "</p>
+            <div class="audio-grid">
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ground Truth</p>
+                <audio controls src="audio/tta/sample2_gt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/tta/sample2_recon.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
+                <audio controls src="audio/tta/sample2_base.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
+                <audio controls src="audio/tta/sample2_ours_alt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/tta/sample2_ours.wav"></audio>
+              </div>
+            </div>
+          </div>
+
+          <!-- sample 3 -->
+          <div class="sample-card">
+            <p class="sample-title">Sample 3</p>
+            <p class="sample-meta">Environment Description: "  "</p>
+            <div class="audio-grid">
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Ground Truth</p>
+                <audio controls src="audio/tta/sample3_gt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Reconstructed</p>
+                <audio controls src="audio/tta/sample3_recon.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>VoiceLDM</p>
+                <audio controls src="audio/tta/sample3_base.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>VoiceDiT</p>
+                <audio controls src="audio/tta/sample3_ours_alt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
+                <audio controls src="audio/tta/sample3_ours.wav"></audio>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPA Analysis -->
+      <div class="task-section" id="task-extra">
+        <div class="h">
+          <h3>REPA Analysis</h3>
+          <!-- <span class="pill">4 samples</span> -->
+        </div>
+        <div class="samples">
+          <div class="sample-card">
+            <p class="sample-title">Sample 1</p>
+            <p class="sample-meta">e.g., w/ vs w/o REPA, teacher type, etc.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant A</p><audio controls src="audio/extra/x1_a.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant B</p><audio controls src="audio/extra/x1_b.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 2</p>
+            <p class="sample-meta">e.g., w/ vs w/o REPA, teacher type, etc.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant A</p><audio controls src="audio/extra/x2_a.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant B</p><audio controls src="audio/extra/x2_b.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 3</p>
+            <p class="sample-meta">e.g., w/ vs w/o REPA, teacher type, etc.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant A</p><audio controls src="audio/extra/x3_a.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant B</p><audio controls src="audio/extra/x3_b.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 4</p>
+            <p class="sample-meta">e.g., w/ vs w/o REPA, teacher type, etc.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant A</p><audio controls src="audio/extra/x4_a.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Variant B</p><audio controls src="audio/extra/x4_b.wav"></audio></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NFEs -->
+      <div class="task-section" id="task-nfes">
+        <div class="h">
+          <h3>NFEs Comparison</h3>
+          <!-- <span class="pill">4 samples</span> -->
+        </div>
+        <div class="samples">
+          <div class="sample-card">
+            <p class="sample-title">Sample 1</p>
+            <p class="sample-meta">Compare few-step vs many-step (NFEs).</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Ours (9 steps)</p><audio controls src="audio/nfes/n1_ours_9.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Baseline (200 NFEs)</p><audio controls src="audio/nfes/n1_base_200.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 2</p>
+            <p class="sample-meta">Compare few-step vs many-step (NFEs).</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Ours (9 steps)</p><audio controls src="audio/nfes/n2_ours_9.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Baseline (200 NFEs)</p><audio controls src="audio/nfes/n2_base_200.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 3</p>
+            <p class="sample-meta">Compare few-step vs many-step (NFEs).</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Ours (9 steps)</p><audio controls src="audio/nfes/n3_ours_9.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Baseline (200 NFEs)</p><audio controls src="audio/nfes/n3_base_200.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 4</p>
+            <p class="sample-meta">Compare few-step vs many-step (NFEs).</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Ours (9 steps)</p><audio controls src="audio/nfes/n4_ours_9.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>Baseline (200 NFEs)</p><audio controls src="audio/nfes/n4_base_200.wav"></audio></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dual-CFG Scale -->
+      <div class="task-section" id="task-cfg">
+        <div class="h">
+          <h3>Dual-CFG Scale</h3>
+          <!-- <span class="pill">4 samples</span> -->
+        </div>
+        <div class="samples">
+          <div class="sample-card">
+            <p class="sample-title">Sample 1</p>
+            <p class="sample-meta">Vary (ω_env, ω_cont) and compare.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 3)</p><audio controls src="audio/cfg/c1_3_3.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 7)</p><audio controls src="audio/cfg/c1_3_7.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 2</p>
+            <p class="sample-meta">Vary (ω_env, ω_cont) and compare.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 3)</p><audio controls src="audio/cfg/c2_3_3.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 7)</p><audio controls src="audio/cfg/c2_3_7.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 3</p>
+            <p class="sample-meta">Vary (ω_env, ω_cont) and compare.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 3)</p><audio controls src="audio/cfg/c3_3_3.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 7)</p><audio controls src="audio/cfg/c3_3_7.wav"></audio></div>
+            </div>
+          </div>
+          <div class="sample-card">
+            <p class="sample-title">Sample 4</p>
+            <p class="sample-meta">Vary (ω_env, ω_cont) and compare.</p>
+            <div class="audio-grid">
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 3)</p><audio controls src="audio/cfg/c4_3_3.wav"></audio></div>
+              <div class="audio-item"><p class="audio-label"><span class="mini"></span>(3, 7)</p><audio controls src="audio/cfg/c4_3_7.wav"></audio></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="footer">
         ImmersiveTTS: Environment-Aware Text-to-Speech with Multimodal Diffusion Transformer and Domain-Specific Representation Alignment
