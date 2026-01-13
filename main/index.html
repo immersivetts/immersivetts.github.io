@@ -288,11 +288,14 @@
       font-weight: 600;
     }
     /* Environment-Aware TTS 특별 색상 */
-    #task-envtts .sample-card .sample-meta:first-of-type{
-      color: #3b82f6; /* 파란색 - Transcription */
+    /* .sample-title이 <p> 태그이므로 nth-of-type 계산에 포함됨 */
+    /* Transcription (두 번째 <p>, 첫 번째 .sample-meta) - 파란색 */
+    #task-envtts .sample-card > p.sample-meta:nth-of-type(2){
+      color: #3b82f6;
     }
-    #task-envtts .sample-card .sample-meta:last-of-type{
-      color: #22c55e; /* 초록색 - Environment Description */
+    /* Environment Description (세 번째 <p>, 두 번째 .sample-meta) - 초록색 */
+    #task-envtts .sample-card > p.sample-meta:nth-of-type(3){
+      color: #22c55e;
     }
 
     /* Audio rows (placeholders) */
