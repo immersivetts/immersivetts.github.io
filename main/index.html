@@ -302,6 +302,14 @@
     #task-tts .sample-card > p.sample-meta:nth-of-type(2){
       color: #3b82f6; /* Transcription - 파란색 */
     }
+    
+    /* REPA Analysis (Transcription, Environment Description 모두 있음) */
+    #task-repa .sample-card > p.sample-meta:nth-of-type(2){
+      color: #3b82f6; /* Transcription - 파란색 */
+    }
+    #task-repa .sample-card > p.sample-meta:nth-of-type(3){
+      color: #22c55e; /* Environment Description - 초록색 */
+    }
 
     /* Audio rows (placeholders) */
     .audio-grid{
@@ -419,6 +427,11 @@
         <button class="task-btn" data-target="task-tts">
           <p class="task-name">Text-to-Speech</p>
           <!-- <p class="task-desc">Your custom setting / benchmark A</p> -->
+        </button>
+
+        <button class="task-btn" data-target="task-repa">
+          <p class="task-name">REPA Analysis</p>
+          <!-- <p class="task-desc">REPA ablation study</p> -->
         </button>
       </div>
     </section>
@@ -643,6 +656,138 @@
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>ImmersiveTTS (Ours)</p>
                 <audio controls src="audio/tts/immersivetts/8455_210777_000072_000000.wav"></audio>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPA Analysis -->
+      <div class="task-section" id="task-repa">
+        <div class="h">
+          <h3>REPA Analysis</h3>
+          <!-- <span class="pill">3 samples</span> -->
+        </div>
+        <div class="samples">
+          <!-- sample 1 -->
+          <div class="sample-card">
+            <p class="sample-title">Sample 1</p>
+            <p class="sample-meta">Transcription: "Sample transcription text here"</p>
+            <p class="sample-meta">Environment Description: "Sample environment description here"</p>
+            <div class="audio-grid">
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>GT</p>
+                <audio controls src="audio/repa/sample1_gt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Base (w/o REPA)</p>
+                <audio controls src="audio/repa/sample1_base.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ WavLM</p>
+                <audio controls src="audio/repa/sample1_wavlm.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ ATST-Frame</p>
+                <audio controls src="audio/repa/sample1_atst.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ USAD</p>
+                <audio controls src="audio/repa/sample1_usad.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ WavLM+USAD</p>
+                <audio controls src="audio/repa/sample1_wavlm_usad.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ USAD+WavLM</p>
+                <audio controls src="audio/repa/sample1_usad_wavlm.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ WavLM+ATST-Frame</p>
+                <audio controls src="audio/repa/sample1_wavlm_atst.wav"></audio>
+              </div>
+            </div>
+          </div>
+
+          <!-- sample 2 -->
+          <div class="sample-card">
+            <p class="sample-title">Sample 2</p>
+            <p class="sample-meta">Transcription: "Sample transcription text here"</p>
+            <p class="sample-meta">Environment Description: "Sample environment description here"</p>
+            <div class="audio-grid">
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>GT</p>
+                <audio controls src="audio/repa/sample2_gt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Base (w/o REPA)</p>
+                <audio controls src="audio/repa/sample2_base.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ WavLM</p>
+                <audio controls src="audio/repa/sample2_wavlm.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ ATST-Frame</p>
+                <audio controls src="audio/repa/sample2_atst.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ USAD</p>
+                <audio controls src="audio/repa/sample2_usad.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ WavLM+USAD</p>
+                <audio controls src="audio/repa/sample2_wavlm_usad.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ USAD+WavLM</p>
+                <audio controls src="audio/repa/sample2_usad_wavlm.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ WavLM+ATST-Frame</p>
+                <audio controls src="audio/repa/sample2_wavlm_atst.wav"></audio>
+              </div>
+            </div>
+          </div>
+
+          <!-- sample 3 -->
+          <div class="sample-card">
+            <p class="sample-title">Sample 3</p>
+            <p class="sample-meta">Transcription: "Sample transcription text here"</p>
+            <p class="sample-meta">Environment Description: "Sample environment description here"</p>
+            <div class="audio-grid">
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>GT</p>
+                <audio controls src="audio/repa/sample3_gt.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>Base (w/o REPA)</p>
+                <audio controls src="audio/repa/sample3_base.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ WavLM</p>
+                <audio controls src="audio/repa/sample3_wavlm.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ ATST-Frame</p>
+                <audio controls src="audio/repa/sample3_atst.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ USAD</p>
+                <audio controls src="audio/repa/sample3_usad.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ WavLM+USAD</p>
+                <audio controls src="audio/repa/sample3_wavlm_usad.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ USAD+WavLM</p>
+                <audio controls src="audio/repa/sample3_usad_wavlm.wav"></audio>
+              </div>
+              <div class="audio-item">
+                <p class="audio-label"><span class="mini"></span>w/ WavLM+ATST-Frame</p>
+                <audio controls src="audio/repa/sample3_wavlm_atst.wav"></audio>
               </div>
             </div>
           </div>
