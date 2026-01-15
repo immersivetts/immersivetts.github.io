@@ -284,31 +284,34 @@
     .sample-meta{
       margin: 0 0 6px;
       font-size: 12px;
-      color: #4b5563;
-      font-weight: 600;
+      color: #111827; /* 기본 검은색, 얇게 */
+      font-weight: 400; /* 얇게 */
+      line-height: 1.5;
     }
-    /* Transcription과 Environment Description 색상 */
-    /* .sample-title이 <p> 태그이므로 nth-of-type 계산에 포함됨 */
+    .sample-meta .meta-label{
+      font-weight: 600; /* 라벨만 굵게 */
+    }
     
+    /* Transcription과 Environment Description 라벨 색상 */
     /* Environment-Aware TTS */
-    #task-envtts .sample-card > p.sample-meta:nth-of-type(2){
-      color: #3b82f6; /* Transcription - 파란색 */
+    #task-envtts .sample-card > p.sample-meta:nth-of-type(2) .meta-label{
+      color: #3b82f6; /* Transcription 라벨 - 파란색 */
     }
-    #task-envtts .sample-card > p.sample-meta:nth-of-type(3){
-      color: #22c55e; /* Environment Description - 초록색 */
+    #task-envtts .sample-card > p.sample-meta:nth-of-type(3) .meta-label{
+      color: #22c55e; /* Environment Description 라벨 - 초록색 */
     }
     
     /* Text-to-Speech (Transcription만 있음) */
-    #task-tts .sample-card > p.sample-meta:nth-of-type(2){
-      color: #3b82f6; /* Transcription - 파란색 */
+    #task-tts .sample-card > p.sample-meta:nth-of-type(2) .meta-label{
+      color: #3b82f6; /* Transcription 라벨 - 파란색 */
     }
     
     /* REPA Analysis (Transcription, Environment Description 모두 있음) */
-    #task-repa .sample-card > p.sample-meta:nth-of-type(2){
-      color: #3b82f6; /* Transcription - 파란색 */
+    #task-repa .sample-card > p.sample-meta:nth-of-type(2) .meta-label{
+      color: #3b82f6; /* Transcription 라벨 - 파란색 */
     }
-    #task-repa .sample-card > p.sample-meta:nth-of-type(3){
-      color: #22c55e; /* Environment Description - 초록색 */
+    #task-repa .sample-card > p.sample-meta:nth-of-type(3) .meta-label{
+      color: #22c55e; /* Environment Description 라벨 - 초록색 */
     }
 
     /* Audio rows (placeholders) */
@@ -454,8 +457,8 @@
           <!-- sample 1 -->
           <div class="sample-card">
             <p class="sample-title">Sample 1</p>
-            <p class="sample-meta">Transcription: "Pretty smart she probably she snaps at them."</p>
-            <p class="sample-meta">Environment Description: "Birds chirping with leaves rustling and wind"</p>
+            <p class="sample-meta"><span class="meta-label">Transcription:</span> "Pretty smart she probably she snaps at them."</p>
+            <p class="sample-meta"><span class="meta-label">Environment Description:</span> "Birds chirping with leaves rustling and wind"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
@@ -483,8 +486,8 @@
           <!-- sample 2 -->
           <div class="sample-card">
             <p class="sample-title">Sample 2</p>
-            <p class="sample-meta">Transcription: "Okay, let's go look at the paper."</p>
-            <p class="sample-meta">Environment Description: "Rapid and repeated gunfire"</p>
+            <p class="sample-meta"><span class="meta-label">Transcription:</span> "Okay, let's go look at the paper."</p>
+            <p class="sample-meta"><span class="meta-label">Environment Description:</span> "Rapid and repeated gunfire"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
@@ -512,8 +515,8 @@
           <!-- sample 3 -->
           <div class="sample-card">
             <p class="sample-title">Sample 3</p>
-            <p class="sample-meta">Transcription: "Second gear the car doesn't spool up too quick anymore because of the turbo and"</p>
-            <p class="sample-meta">Environment Description: "A vehicle accelerating"</p>
+            <p class="sample-meta"><span class="meta-label">Transcription:</span> "Second gear the car doesn't spool up too quick anymore because of the turbo and"</p>
+            <p class="sample-meta"><span class="meta-label">Environment Description:</span> "A vehicle accelerating"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
@@ -541,8 +544,8 @@
           <!-- sample 4 -->
           <div class="sample-card">
             <p class="sample-title">Sample 4</p>
-            <p class="sample-meta">Transcription: "Just like that and get a glass out"</p>
-            <p class="sample-meta">Environment Description: "Dishes clanking and doors banging"</p>
+            <p class="sample-meta"><span class="meta-label">Transcription:</span> "Just like that and get a glass out"</p>
+            <p class="sample-meta"><span class="meta-label">Environment Description:</span> "Dishes clanking and doors banging"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
@@ -579,7 +582,7 @@
           <!-- sample 1 -->
           <div class="sample-card">
             <p class="sample-title">Sample 1</p>
-            <p class="sample-meta">Transcription: "The boy from the house is coming up for the rector."</p>
+            <p class="sample-meta"><span class="meta-label">Transcription:</span> "The boy from the house is coming up for the rector."</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
@@ -607,7 +610,7 @@
           <!-- sample 2 -->
           <div class="sample-card">
             <p class="sample-title">Sample 2</p>
-            <p class="sample-meta">Transcription: "You represented a divinity, beautiful, disdainful, inconstant."</p>
+            <p class="sample-meta"><span class="meta-label">Transcription:</span> "You represented a divinity, beautiful, disdainful, inconstant."</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
@@ -635,7 +638,7 @@
           <!-- sample 3 -->
           <div class="sample-card">
             <p class="sample-title">Sample 3</p>
-            <p class="sample-meta">Transcription: ""Half past ten," said the captain, looking at his watch."</p>
+            <p class="sample-meta"><span class="meta-label">Transcription:</span> ""Half past ten," said the captain, looking at his watch."</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
@@ -672,8 +675,8 @@
           <!-- sample 1 -->
           <div class="sample-card">
             <p class="sample-title">Sample 1</p>
-            <p class="sample-meta">Transcription: "Your competition chatter is more of a rolling type of chatter."</p>
-            <p class="sample-meta">Environment Description: "A duck quacks while birds chirp in the distance."</p>
+            <p class="sample-meta"><span class="meta-label">Transcription:</span> "Your competition chatter is more of a rolling type of chatter."</p>
+            <p class="sample-meta"><span class="meta-label">Environment Description:</span> "A duck quacks while birds chirp in the distance."</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
@@ -713,8 +716,8 @@
           <!-- sample 2 -->
           <div class="sample-card">
             <p class="sample-title">Sample 2</p>
-            <p class="sample-meta">Transcription: "Little bit of bad weather."</p>
-            <p class="sample-meta">Environment Description: "Rain falling"</p>
+            <p class="sample-meta"><span class="meta-label">Transcription:</span> "Little bit of bad weather."</p>
+            <p class="sample-meta"><span class="meta-label">Environment Description:</span> "Rain falling"</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
@@ -754,8 +757,8 @@
           <!-- sample 3 -->
           <div class="sample-card">
             <p class="sample-title">Sample 3</p>
-            <p class="sample-meta">Transcription: "Nice boat."</p>
-            <p class="sample-meta">Environment Description: "A motorboat engine running followed by a plastic clank while wind blows into a microphone."</p>
+            <p class="sample-meta"><span class="meta-label">Transcription:</span> "Nice boat."</p>
+            <p class="sample-meta"><span class="meta-label">Environment Description:</span> "A motorboat engine running followed by a plastic clank while wind blows into a microphone."</p>
             <div class="audio-grid">
               <div class="audio-item">
                 <p class="audio-label"><span class="mini"></span>Ground Truth</p>
