@@ -289,8 +289,14 @@
       line-height: 1.5;
     }
     .sample-meta .meta-label{
-      font-weight: 600; /* 라벨만 굵게 */
+      font-weight: 600 !important; /* 라벨만 굵게 */
       display: inline-block;
+    }
+    
+    /* 텍스트 부분은 확실히 얇고 검은색으로 유지 */
+    .sample-meta {
+      color: #111827 !important;
+      font-weight: 400 !important;
     }
     
     /* Transcription과 Environment Description 라벨 색상 */
